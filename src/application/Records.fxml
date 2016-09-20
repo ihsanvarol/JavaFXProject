@@ -3,61 +3,24 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import org.controlsfx.control.CheckComboBox?>
 
 <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.RecordsController">
    <children>
-      <BorderPane id="rich-blue" layoutX="295.0" layoutY="112.0" prefHeight="464.0" prefWidth="789.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-         <center>
-            <TableView fx:id="tablePsycho" prefHeight="179.0" prefWidth="789.0" BorderPane.alignment="CENTER">
-              <columns>
-                <TableColumn fx:id="columnLRef" prefWidth="75.0" text="Protokol No" />
-                <TableColumn fx:id="columnName" prefWidth="75.0" text="Adı" />
-                  <TableColumn fx:id="columnSurname" prefWidth="75.0" text="Soyadı" />
-              </columns>
-            </TableView>
-         </center>
-         <top>
-            <GridPane BorderPane.alignment="CENTER">
-              <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-              </columnConstraints>
-              <rowConstraints>
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-              </rowConstraints>
-               <children>
-                  <RadioButton mnemonicParsing="false" text="Tüm Kayıtlar" />
-                  <RadioButton layoutX="10.0" layoutY="17.0" mnemonicParsing="false" text="Bu Ay" GridPane.columnIndex="1" />
-                  <RadioButton layoutX="273.0" layoutY="17.0" mnemonicParsing="false" text="Bugün" GridPane.columnIndex="2" />
-                  <Label text="Tarih Aralığı:" GridPane.rowIndex="1" />
-                  <DatePicker GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                  <DatePicker layoutX="273.0" layoutY="43.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-                  <AnchorPane nodeOrientation="RIGHT_TO_LEFT" GridPane.columnIndex="2" GridPane.rowIndex="5">
-                     <children>
-                        <Button layoutX="160.0" layoutY="4.0" mnemonicParsing="false" text="Button" />
-                     </children>
-                  </AnchorPane>
-                  <Button id="green" fx:id="refreshButton" mnemonicParsing="false" onAction="#loadDataFromDataBase" text="Yenile" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-                  <Button mnemonicParsing="false" onAction="#onUpdate" text="Button" GridPane.rowIndex="5" />
-                  <Button mnemonicParsing="false" text="Button" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-               </children>
-            </GridPane>
-         </top>
+      <BorderPane layoutX="295.0" layoutY="112.0" prefHeight="464.0" prefWidth="789.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <bottom>
             <ScrollPane prefHeight="58.0" prefWidth="789.0" BorderPane.alignment="CENTER">
               <content>
@@ -82,6 +45,107 @@
               </content>
             </ScrollPane>
          </bottom>
+         <center>
+            <TabPane prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
+              <tabs>
+                <Tab text="Kayıtlar">
+                  <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <TableView fx:id="tablePsycho" prefHeight="252.0" prefWidth="789.0" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                <columns>
+                                  <TableColumn fx:id="columnLRef" prefWidth="75.0" text="Protokol No" />
+                                  <TableColumn fx:id="columnName" prefWidth="75.0" text="Adı" />
+                                    <TableColumn fx:id="columnSurname" prefWidth="75.0" text="Soyadı" />
+                                </columns>
+                              </TableView>
+                              <ToolBar prefHeight="40.0" prefWidth="265.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                                <items>
+                                  <Button contentDisplay="TOP" mnemonicParsing="false" text="Yeni Test">
+                                       <graphic>
+                                          <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@ico/Accept-Male-User.png" />
+                                             </image>
+                                          </ImageView>
+                                       </graphic>
+                                    </Button>
+                                    <Button contentDisplay="TOP" mnemonicParsing="false" onAction="#onUpdate" text="Düzenle">
+                                       <graphic>
+                                          <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@ico/Accept-Male-User.png" />
+                                             </image>
+                                          </ImageView>
+                                       </graphic>
+                                    </Button>
+                                    <Button contentDisplay="TOP" mnemonicParsing="false" text="Testi Sil">
+                                       <graphic>
+                                          <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@ico/Accept-Male-User.png" />
+                                             </image>
+                                          </ImageView>
+                                       </graphic>
+                                    </Button>
+                                    <Button fx:id="refreshButton" contentDisplay="TOP" mnemonicParsing="false" onAction="#loadDataFromDataBase" prefHeight="54.0" prefWidth="68.0" text="Yenile">
+                                       <graphic>
+                                          <ImageView fitHeight="41.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@ico/search-database.png" />
+                                             </image>
+                                          </ImageView>
+                                       </graphic></Button>
+                                </items>
+                              </ToolBar>
+                           </children>
+                        </AnchorPane>
+                  </content>
+                </Tab>
+                <Tab text="Filtreler">
+                  <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <GridPane>
+                                <columnConstraints>
+                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" prefWidth="10.0" />
+                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="100.0" prefWidth="200.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                </columnConstraints>
+                                <rowConstraints>
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                </rowConstraints>
+                                 <children>
+                                    <Label text="Test Tarihi" GridPane.rowIndex="2" />
+                                    <DatePicker GridPane.columnIndex="3" GridPane.rowIndex="2" />
+                                    <DatePicker layoutX="273.0" layoutY="43.0" GridPane.columnIndex="4" GridPane.rowIndex="2" />
+                                    <AnchorPane nodeOrientation="RIGHT_TO_LEFT" GridPane.columnIndex="3" GridPane.rowIndex="6" />
+                                    <CheckComboBox GridPane.columnIndex="2" />
+                                    <Label text="Adı" />
+                                    <Label text=":" GridPane.columnIndex="1" />
+                                    <Label text=":" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                    <CheckComboBox GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                                    <Label text="Soyadı" GridPane.rowIndex="1" />
+                                    <Label text=":" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                    <CheckComboBox GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                                 </children>
+                              </GridPane>
+                              <Button fx:id="refreshButton1" layoutX="32.0" layoutY="319.0" minWidth="0.0" mnemonicParsing="false" onAction="#loadDataFromDataBase" prefHeight="56.0" prefWidth="769.0" text="Filtreleri Uygula" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" />
+                           </children>
+                        </AnchorPane>
+                  </content>
+                </Tab>
+              </tabs>
+            </TabPane>
+         </center>
       </BorderPane>
    </children>
 </AnchorPane>
